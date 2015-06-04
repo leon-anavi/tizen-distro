@@ -28,14 +28,11 @@ RDEPENDS_${PN}-dev += "capi-system-device"
 DEPENDS = ""
 #DEPENDS of capi-system-device
 inherit tizen_cmake
-DEPENDS += "capi-system-info"
-DEPENDS += "dbus"
 inherit pkgconfig
 DEPENDS += "dlog"
-DEPENDS += "pkgconfig(deviced)"
+DEPENDS += "system-server"
 DEPENDS += "capi-base-common"
 DEPENDS += "vconf"
-DEPENDS += "dbus-glib"
 
 do_prep() {
  cd ${S}
@@ -73,7 +70,7 @@ do_compile() {
          -DBUILD_SHARED_LIBS:BOOL=ON \
          -DCMAKE_TOOLCHAIN_FILE=${WORKDIR}/toolchain.cmake \
          ${EXTRA_OECMAKE} . -DFULLVER=0.1.0 -DMAJORVER=${MAJORVER}
- oe_runmake -j16
+ oe_runmake ${PARALLEL_MAKE}
  
  
  
@@ -118,8 +115,7 @@ PACKAGES += " capi-system-device-dev "
 PACKAGES += " capi-system-device "
 
 capi-system-device-dev_files = ""
-capi-system-device-dev_files += "${prefix}/include/device/*.h"
-capi-system-device-dev_files += "${prefix}/include/system/*.h"
+capi-system-device-dev_files += "${prefix}/include/system/device.h"
 capi-system-device-dev_files += "${prefix}/lib/pkgconfig/*.pc"
 capi-system-device-dev_files += "${prefix}/lib/libcapi-system-device.so"
 MANIFESTFILES_${PN}-dev = "capi-system-device.manifest"

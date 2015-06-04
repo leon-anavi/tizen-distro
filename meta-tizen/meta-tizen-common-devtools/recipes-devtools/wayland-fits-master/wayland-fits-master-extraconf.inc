@@ -1,4 +1,5 @@
 SRC_URI += "file://temporarily-removeliboostcheckinconfigure.patch"
+SRC_URI += "file://0001-Fix-Wayland-Weston-version.patch"
 
 do_compile() {
  cd ${S}

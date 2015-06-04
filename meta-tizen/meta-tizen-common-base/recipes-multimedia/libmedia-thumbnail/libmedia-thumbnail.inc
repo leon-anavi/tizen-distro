@@ -54,9 +54,9 @@ DEPENDS += "aul"
 DEPENDS += "libexif"
 DEPENDS += "libmm-utility"
 DEPENDS += "media-server"
+DEPENDS += "gdk-pixbuf"
 DEPENDS += "heynoti"
 DEPENDS += "vconf"
-DEPENDS += "pkgconfig(gdk-pixbuf-2.0)"
 
 do_prep() {
  cd ${S}

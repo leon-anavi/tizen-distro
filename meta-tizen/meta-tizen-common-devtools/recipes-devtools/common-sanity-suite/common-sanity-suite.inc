@@ -4,7 +4,7 @@ SECTION = "Development/Testing"
 LICENSE = "GPL-2.0"
 PV = "1.1"
 
-SRC_URI = ""
+SRC_URI = "file://0001-Disable-the-system-set-with-tests-for-zypper-and-SMA.patch"
 
 S = "${WORKDIR}/git"
 

@@ -1,8 +1,8 @@
-DESCRIPTION = "Multimedia Framework Common Lib"
+DESCRIPTION = "Multimedia Framework Common Library"
 HOMEPAGE = "http://nohomepage.org"
 SECTION = "Multimedia/Libraries"
 LICENSE = "Apache-2.0"
-PV = "0.2.85"
+PV = "0.2.55"
 
 SRC_URI = ""
 
@@ -24,9 +24,6 @@ RDEPENDS = ""
 #RDEPENDS of libmm-common-dev (${PN}-dev)
 RDEPENDS_${PN}-dev += "libmm-common"
 
-#RDEPENDS of libmm-common (${PN})
-RDEPENDS_${PN} += "glibc"
-
 
 DEPENDS = ""
 #DEPENDS of libmm-common
@@ -38,7 +35,7 @@ do_prep() {
  cd ${S}
  chmod -Rf a+rX,u+w,g-w,o-w ${S}
  #setup -q
- 
+ cp ${S}/packaging/libmm-common.manifest .
  
  
 }
@@ -56,12 +53,11 @@ do_compile() {
   unset DISPLAY
   LD_AS_NEEDED=1; export LD_AS_NEEDED ;
   
+  
   CFLAGS="$CFLAGS -DEXPORT_API=\"__attribute__((visibility(\\\"default\\\")))\" "
-  export CFLAGS+=" -Wall -Wcast-align -Wcast-qual -Wextra -Wno-array-bounds -Wno-empty-body -Wno-ignored-qualifiers -Wno-unused-parameter -Wshadow -Wwrite-strings -Wswitch-default -Wno-unused-but-set-parameter -Wno-unused-but-set-variable"
   
   autotools_do_configure
-  make -j16
-  
+  oe_runmake -j16
   
   
   
@@ -77,7 +73,6 @@ do_install() {
  rm -rf ${D}
  mkdir -p ${D}
  
- rm -rf ${D}
  
    oe_runmake \
          DESTDIR=${D} \
@@ -87,7 +82,6 @@ do_install() {
    rm -f ${D}${infodir}/dir 
    find ${D} -regex ".*\.la$" | xargs rm -f -- 
    find ${D} -regex ".*\.a$" | xargs rm -f --
- 
  
  
 }
@@ -119,6 +113,7 @@ libmm-common-dev_files += "${prefix}/include/mmf/mm_debug.h"
 libmm-common-dev_files += "${prefix}/include/mmf/mm.h"
 libmm-common-dev_files += "${prefix}/lib/pkgconfig/mm-common.pc"
 libmm-common-dev_files += "${prefix}/lib/libmmfcommon.so"
+MANIFESTFILES_${PN}-dev = "libmm-common.manifest"
 
 libmm-common_files = ""
 libmm-common_files += "${prefix}/lib/libmmfcommon.so.*"

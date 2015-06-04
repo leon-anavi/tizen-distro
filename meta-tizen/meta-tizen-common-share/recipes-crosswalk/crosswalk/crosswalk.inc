@@ -39,7 +39,6 @@ RDEPENDS_widget-manifest-parser-dev += "widget-manifest-parser"
 
 DEPENDS = ""
 #DEPENDS of crosswalk
-DEPENDS += "pkgconfig(protobuf)"
 DEPENDS += "cairo"
 DEPENDS += "pkgmgr"
 DEPENDS += "expat"
@@ -106,7 +105,7 @@ do_prep() {
  # Widget manifest parser devel
  cp src/xwalk/tizen/widget-manifest-parser/widget-manifest-parser.pc.in .
  sed "s|@VERSION@|11.40.277.0|g" widget-manifest-parser.pc.in > widget-manifest-parser.pc
- 
+
  cp -a src/AUTHORS AUTHORS.chromium
  cp -a src/LICENSE LICENSE.chromium
  cp -a src/xwalk/LICENSE LICENSE.xwalk
@@ -131,7 +130,9 @@ do_compile() {
  
  
  mkdir -p src/out
+ if [ -f ${prefix}/share/crosswalk-thirdparty/out.tgz ]; then
  tar -zxvf ${prefix}/share/crosswalk-thirdparty/out.tgz
+ fi
  python ./changedate.py
  
  # Stop unconditionally passing -Wall to the compiler. Chromium has its own
@@ -139,12 +140,12 @@ do_compile() {
  # to be left out (since several pieces are built with -Werror). At least in
  # M39, this is preventing the "rtc_base" target from being built because it
  # does not expect -Wall to be passed to the compiler (see webrtc issue 3307).
- export CXXFLAGS=`echo $CXXFLAGS | sed s,-Wall,,g`
+ export CXXFLAGS="`echo $CXXFLAGS | sed s,-Wall,,g`"
  
  # For ffmpeg on ia32. The original CFLAGS set by the gyp and config files in
  # src/third_party/ffmpeg already pass -O2 -fomit-frame-pointer, but Tizen's
  # CFLAGS end up appending -fno-omit-frame-pointer. See http://crbug.com/37246
- export CFLAGS=`echo $CFLAGS | sed s,-fno-omit-frame-pointer,,g`
+ export CFLAGS="`echo $CFLAGS | sed s,-fno-omit-frame-pointer,,g`"
  
  
  # Building the RPM in the GBS chroot fails with errors such as
@@ -179,6 +180,9 @@ do_compile() {
  # sysroot variable is automatically set for cross compilation to use arm-sysroot provided by Chromium project
  # sysroot usage is not needed, we need to use arm libraries from the virtualized environment.
  #
+
+ GYP_EXTRA_FLAGS="${GYP_EXTRA_FLAGS} -Dsysroot= "
+
  # Crosswalk build fails if the fpu selected in the gcc option is different from neon in case of arm7 compilation
  # So force it.
  
@@ -187,6 +191,7 @@ do_compile() {
  # --no-parallel is added because chroot does not mount a /dev/shm, this will
  # cause python multiprocessing.SemLock error.
  export GYP_GENERATORS='ninja'
+ export GYP_DEFINES="$GYP_DEFINES arm_float_abi=hard"
  ./src/xwalk/gyp_xwalk src/xwalk/xwalk.gyp \
  --no-parallel \
  ${GYP_EXTRA_FLAGS} \

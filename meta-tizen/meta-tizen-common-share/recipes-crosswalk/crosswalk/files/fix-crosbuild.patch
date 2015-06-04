@@ -19,3 +19,14 @@ index 5ce3249..329623f 100644
                  ],
                }],
              ],
+@@ -5824,8 +5825,8 @@
+       # Set default ARM cross compiling on linux.  These can be overridden
+       # using CC/CXX/etc environment variables.
+       'make_global_settings': [
+-        ['CC', '<!(which arm-linux-gnueabihf-gcc)'],
+-        ['CXX', '<!(which arm-linux-gnueabihf-g++)'],
++        ['CC', '$(CC)'],
++        ['CXX', '$(CXX)'],
+         ['CC.host', '<(host_cc)'],
+         ['CXX.host', '<(host_cxx)'],
+       ],

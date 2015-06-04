@@ -23,6 +23,8 @@ RDEPENDS_${PN} += "testkit-stub"
 RDEPENDS_${PN} += "python-lxml"
 RDEPENDS_${PN} += "python-requests"
 RDEPENDS_${PN} += "dbus-python"
+RDEPENDS_${PN} += "python-ctypes"
+RDEPENDS_${PN} += "python-pip"
 
 
 DEPENDS = ""
@@ -31,7 +33,6 @@ inherit pythonnative
 DEPENDS_append_class-native = " fdupes-native"
 DEPENDS_append_class-target = " fdupes-native"
 DEPENDS += "python-requests"
-DEPENDS += "python-distribute"
 
 do_prep() {
  cd ${S}

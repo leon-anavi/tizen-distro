@@ -10,6 +10,10 @@ S = "${WORKDIR}/git"
 
 inherit manifest autotools-brokensep
 
+EXTRA_OEMAKE += "SYS_ROOT=${D}"
+INHIBIT_PACKAGE_STRIP = "1"
+INSANE_SKIP_${PN} = "arch"
+
 BBCLASSEXTEND = ""
 PROVIDES = ""
 
@@ -42,11 +46,7 @@ do_compile() {
  unset DISPLAY
  LD_AS_NEEDED=1; export LD_AS_NEEDED ;
  
- make -j16
- 
- 
- 
- 
+ oe_runmake ${PARALLEL_MAKE}
 }
 
 do_install() {

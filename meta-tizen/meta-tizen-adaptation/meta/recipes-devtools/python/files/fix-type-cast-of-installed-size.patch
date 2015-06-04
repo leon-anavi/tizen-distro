@@ -1,0 +1,14 @@
+--- a/smart/backends/rpm/metadata.py	2015-05-27 11:51:46.501144924 +0300
++++ b/smart/backends/rpm/metadata.py	2015-05-27 11:56:24.485149287 +0300
+@@ -239,7 +239,10 @@
+                 elif tag == SIZE:
+                     info["size"] = int(elem.get("package"))
+                     if elem.get("installed"):
+-                        info["installed_size"] = int(elem.get("installed"))
++                        try:
++                            info["installed_size"] = int(elem.get("installed"))
++                        except ValueError:
++                            info["installed_size"] = 0
+ 
+                 elif tag == CHECKSUM:
+                     info[elem.get("type")] = elem.text

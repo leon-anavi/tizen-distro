@@ -118,9 +118,7 @@ do_compile() {
  
  
  export GYP_GENERATORS='ninja'
- GYP_OPTIONS="--depth=. -Dtizen=1 -Dextension_build_type=Debug -Dextension_host_os=pc"
- 
- GYP_OPTIONS="$GYP_OPTIONS -Ddisplay_type=wayland"
+ GYP_OPTIONS="--depth=. -Dtizen=1 -Dextension_build_type=Release -Dextension_host_os=ivi -Ddisplay_type=wayland"
  
  ./tools/gyp/gyp $GYP_OPTIONS tizen-wrt.gyp
  

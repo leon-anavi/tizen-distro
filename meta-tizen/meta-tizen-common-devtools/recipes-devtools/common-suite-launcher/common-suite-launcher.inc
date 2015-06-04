@@ -19,6 +19,8 @@ PROVIDES = ""
 RDEPENDS = ""
 #RDEPENDS of common-suite-launcher (${PN})
 RDEPENDS_${PN} += "xmlstarlet"
+RDEPENDS_${PN} += "python-argparse"
+RDEPENDS_${PN} += "python-lxml"
 
 
 DEPENDS = ""

@@ -1,0 +1,14 @@
+diff --git a/src/ozone/wayland/wayland.gyp b/src/ozone/wayland/wayland.gyp
+index 652ada2..6010a09 100644
+--- a/src/ozone/wayland/wayland.gyp
++++ b/src/ozone/wayland/wayland.gyp
+@@ -20,7 +20,7 @@
+       'type': 'static_library',
+       'variables': {
+         'WAYLAND_VERSION': '1.4.0',
+-        'MESA_VERSION': '9.1.3',
++        'MESA_VERSION': '1.0.0',
+         'wayland_packages': [
+           'egl >= <(MESA_VERSION)',
+           'wayland-client >= <(WAYLAND_VERSION)',
+

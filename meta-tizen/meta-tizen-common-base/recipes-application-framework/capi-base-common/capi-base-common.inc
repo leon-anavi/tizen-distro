@@ -2,7 +2,7 @@ DESCRIPTION = "Common header files of Tizen Native API"
 HOMEPAGE = "http://nohomepage.org"
 SECTION = "API/C API"
 LICENSE = "Apache-2.0"
-PV = "0.1.0"
+PV = "0.1.9"
 
 SRC_URI = ""
 
@@ -50,7 +50,8 @@ do_compile() {
  export LANG
  unset DISPLAY
  LD_AS_NEEDED=1; export LD_AS_NEEDED ;
- 
+
+ MAJORVER=`echo ${PV} | cut -d. -f1`
  
    cmake \
          -DCMAKE_VERBOSE_MAKEFILE=ON \
@@ -63,8 +64,8 @@ do_compile() {
          -DCMAKE_SKIP_RPATH:BOOL=ON \
          -DBUILD_SHARED_LIBS:BOOL=ON \
          -DCMAKE_TOOLCHAIN_FILE=${WORKDIR}/toolchain.cmake \
-         ${EXTRA_OECMAKE} .
- make -j16
+         ${EXTRA_OECMAKE} . -DFULLVER=${PV} -DMAJORVER=${MAJORVER}
+ make ${PARALLEL_MAKE}
  
  
  
@@ -99,9 +100,11 @@ PACKAGES += " capi-base-common "
 capi-base-common-dev_files = ""
 capi-base-common-dev_files += "${prefix}/include/*.h"
 capi-base-common-dev_files += "${prefix}/lib/pkgconfig/capi-base-common.pc"
+capi-base-common-dev_files += "${prefix}/lib/libcapi-base-common.so"
 MANIFESTFILES_${PN}-dev = "capi-base-common.manifest"
 
 capi-base-common_files = ""
+capi-base-common_files += "${prefix}/lib/libcapi-base-common.so.*"
 MANIFESTFILES_${PN} = "capi-base-common.manifest"
 
 FILES_${PN}-dev = "${capi-base-common-dev_files}"
