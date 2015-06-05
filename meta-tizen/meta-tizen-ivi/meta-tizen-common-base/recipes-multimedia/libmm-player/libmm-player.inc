@@ -68,7 +68,7 @@ do_compile() {
   ./autogen.sh
   
   autotools_do_configure
-  oe_runmake -j1
+  oe_runmake ${PARALLEL_MAKE}
   
   
   

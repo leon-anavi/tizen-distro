@@ -74,7 +74,7 @@ do_compile() {
          -DBUILD_SHARED_LIBS:BOOL=ON \
          -DCMAKE_TOOLCHAIN_FILE=${WORKDIR}/toolchain.cmake \
          ${EXTRA_OECMAKE} . -DTZ_SYS_SHARE=${prefix}/share
- make -j16
+ make ${PARALLEL_MAKE}
  
  
  

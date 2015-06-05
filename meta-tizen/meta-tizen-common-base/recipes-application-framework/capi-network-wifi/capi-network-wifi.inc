@@ -73,7 +73,7 @@ do_compile() {
          -DCMAKE_TOOLCHAIN_FILE=${WORKDIR}/toolchain.cmake \
          ${EXTRA_OECMAKE} . -DFULLVER=0.1.2_18 -DMAJORVER=${MAJORVER}
  
- make -j16
+ make ${PARALLEL_MAKE}
  
  
  

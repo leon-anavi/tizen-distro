@@ -70,7 +70,7 @@ do_compile() {
         -DENABLE_TIME_TRACER="OFF" \
         -DSYSTEMD_SERVICE_PREFIX="${prefix}/lib/systemd/user"
  
- oe_runmake -j16 VERBOSE=1
+ oe_runmake ${PARALLEL_MAKE} VERBOSE=1
  
  
  

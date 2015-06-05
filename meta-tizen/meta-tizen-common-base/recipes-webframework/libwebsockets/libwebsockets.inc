@@ -74,7 +74,7 @@ do_compile() {
          -DCMAKE_TOOLCHAIN_FILE=${WORKDIR}/toolchain.cmake \
          ${EXTRA_OECMAKE} -DWITH_SSL=On -DWITH_SD_DAEMON=ON
  
- oe_runmake -j16
+ oe_runmake ${PARALLEL_MAKE}
  
  
  

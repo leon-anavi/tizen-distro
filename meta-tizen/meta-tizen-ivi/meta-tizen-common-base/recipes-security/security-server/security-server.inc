@@ -107,7 +107,7 @@ do_compile() {
           -DCMAKE_VERBOSE_MAKEFILE=ON \
           -DSYSTEMD_DIR=${systemd_unitdir}/system
  
- oe_runmake -j16
+ oe_runmake ${PARALLEL_MAKE}
  
  
  

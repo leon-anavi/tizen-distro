@@ -85,7 +85,7 @@ do_compile() {
   dbus-binding-tool --mode=glib-client --prefix=alarm_client ./alarm-expire.xml > ./include/alarm-expire-stub.h
   
   autotools_do_configure
-  oe_runmake -j16
+  oe_runmake ${PARALLEL_MAKE}
   
   
   

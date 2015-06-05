@@ -77,7 +77,7 @@ do_compile() {
          ${EXTRA_OECMAKE} . -DFULLVER=0.1.5 -DMAJORVER=${MAJORVER} \
           -DX11_SUPPORT=Off
  
- make -j16
+ make ${PARALLEL_MAKE}
  
  
  

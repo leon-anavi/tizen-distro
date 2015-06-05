@@ -71,7 +71,7 @@ do_compile() {
          -DCMAKE_TOOLCHAIN_FILE=${WORKDIR}/toolchain.cmake \
          ${EXTRA_OECMAKE} . -DTAPI_VERSION=3.0.1
  
- make -j16
+ make ${PARALLEL_MAKE}
  
  
  

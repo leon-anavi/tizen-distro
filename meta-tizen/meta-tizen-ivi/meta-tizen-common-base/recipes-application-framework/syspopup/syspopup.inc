@@ -91,7 +91,7 @@ do_compile() {
  -Dwith_wayland=TRUE \
  -DEXTRA_CFLAGS=-fPIC
  
- make -j16
+ make ${PARALLEL_MAKE}
  
  
  

@@ -97,7 +97,7 @@ do_compile() {
          -DSYSTEMD_INSTALL_DIR=${systemd_unitdir}/system \
          -DCMAKE_BUILD_TYPE=RELEASE \
          -DCMAKE_VERBOSE_MAKEFILE=ON
- make -j16
+ make ${PARALLEL_MAKE}
  
  
  
