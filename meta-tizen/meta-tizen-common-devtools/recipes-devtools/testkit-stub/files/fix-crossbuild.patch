@@ -1,0 +1,65 @@
+diff --git a/makefile b/makefile
+index 427583b..e3ed7da 100644
+--- a/makefile
++++ b/makefile
+@@ -4,7 +4,6 @@ UT_TARGET = ut
+ OBJ_PATH = obj
+ PREFIX_BIN =
+ 
+-CC = g++
+ INCLUDES = -I include
+ LIBS = 
+ CFLAGS =-Wall -Werror
+@@ -33,24 +32,24 @@ default:init compile
+ win:init win_compile
+ android:init android_compile
+ ut:init ut_compile
+-ut: CC += -DDEBUG -g
+-debug: CC += -DDEBUG -g
++ut: CXX += -DDEBUG -g
++debug: CXX += -DDEBUG -g
+ debug: default
+ 
+ $(C_OBJS):$(OBJ_PATH)/%.o:%.c
+-	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
++	$(CXX) -c $(CFLAGS) $(INCLUDES) $< -o $@
+ 
+ $(JSON_OBJS):$(OBJ_PATH)/%.o:%.cpp
+-	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
++	$(CXX) -c $(CFLAGS) $(INCLUDES) $< -o $@
+ 
+ $(SERVER_OBJS):$(OBJ_PATH)/%.o:%.cpp
+-	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
++	$(CXX) -c $(CFLAGS) $(INCLUDES) $< -o $@
+ 
+ $(MAIN_OBJS):$(OBJ_PATH)/%.o:%.cpp
+-	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
++	$(CXX) -c $(CFLAGS) $(INCLUDES) $< -o $@
+ 
+ $(UT_OBJS):$(OBJ_PATH)/%.o:%.cpp
+-	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
++	$(CXX) -c $(CFLAGS) $(INCLUDES) $< -o $@
+ 
+ init:
+ 	$(foreach d,$(JSON_SRCDIR), mkdir -p $(OBJ_PATH)/$(d);)
+@@ -59,16 +58,16 @@ init:
+ 	$(foreach d,$(UT_SRCDIR), mkdir -p $(OBJ_PATH)/$(d);)
+ 
+ ut_compile:$(JSON_OBJS) $(SERVER_OBJS) $(UT_OBJS)
+-	$(CC)  $^ -o $(UT_TARGET)  $(LINKFLAGS) $(LIBS)
++	$(CXX)  $^ -o $(UT_TARGET)  $(LINKFLAGS) $(LIBS)
+ 
+ compile:$(JSON_OBJS) $(SERVER_OBJS) $(MAIN_OBJS)
+-	$(CC)  $^ -o $(TARGET)  $(LINKFLAGS) $(LIBS)
++	$(CXX)  $^ -o $(TARGET)  $(LINKFLAGS) $(LIBS)
+ 
+ win_compile:$(JSON_OBJS) $(SERVER_OBJS) $(MAIN_OBJS)
+-	$(CC)  $^ -o $(WIN_TARGET)  $(WIN_LINKFLAGS) $(LIBS)
++	$(CXX)  $^ -o $(WIN_TARGET)  $(WIN_LINKFLAGS) $(LIBS)
+ 
+ android_compile:$(JSON_OBJS) $(SERVER_OBJS) $(MAIN_OBJS)
+-	$(CC)  $^ -o $(TARGET)  $(ANDROID_LINKFLAGS) $(LIBS)
++	$(CXX)  $^ -o $(TARGET)  $(ANDROID_LINKFLAGS) $(LIBS)
+ 
+ clean:
+ 	rm -rf $(OBJ_PATH)

@@ -4,7 +4,7 @@ SECTION = "Development/Testing"
 LICENSE = "GPL-2.0"
 PV = "1.0"
 
-SRC_URI = ""
+SRC_URI = "file://fix-crossbuild.patch"
 
 S = "${WORKDIR}/git"
 
@@ -12,7 +12,6 @@ inherit manifest autotools-brokensep
 
 EXTRA_OEMAKE += "SYS_ROOT=${D}"
 INHIBIT_PACKAGE_STRIP = "1"
-INSANE_SKIP_${PN} = "arch"
 
 BBCLASSEXTEND = ""
 PROVIDES = ""
