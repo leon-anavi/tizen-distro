@@ -58,7 +58,7 @@ do_compile() {
   # use libxml2 as built by libxml2 source package
   mkdir .libs
   cp -v ${prefix}/lib/libxml2.la .
-  make -C python -j16
+  make -C python ${PARALLEL_MAKE}
   
   
   

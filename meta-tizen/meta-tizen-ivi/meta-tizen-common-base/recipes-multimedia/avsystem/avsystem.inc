@@ -70,7 +70,8 @@ do_compile() {
   
   autotools_do_configure
   
-  oe_runmake -j16
+  oe_runmake ${PARALLEL_MAKE}
+
   
   
   

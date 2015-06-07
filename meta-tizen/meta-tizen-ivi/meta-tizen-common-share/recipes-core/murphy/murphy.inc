@@ -210,7 +210,7 @@ do_compile() {
   
   autotools_do_configure
   oe_runmake clean
-  oe_runmake -j16 $V
+  oe_runmake ${PARALLEL_MAKE} $V
   
   
   

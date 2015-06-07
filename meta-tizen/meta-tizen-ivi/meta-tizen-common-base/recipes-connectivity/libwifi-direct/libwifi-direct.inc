@@ -41,6 +41,7 @@ do_prep() {
  #setup -q
  cp ${S}/packaging/libwifi-direct.manifest .
  
+
  export ARCH=i586
  
  

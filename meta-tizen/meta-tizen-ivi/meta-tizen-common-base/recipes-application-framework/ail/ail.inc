@@ -89,7 +89,7 @@ do_compile() {
          ${EXTRA_OECMAKE} .  -DTZ_SYS_RW_DESKTOP_APP=${prefix}/share/applications \
            -DBUILD_PKGTYPE=rpm
  
- oe_runmake -j16
+ oe_runmake ${PARALLEL_MAKE}
  
  
  

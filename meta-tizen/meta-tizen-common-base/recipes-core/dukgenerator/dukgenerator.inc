@@ -68,7 +68,7 @@ do_compile() {
          -DBUILD_SHARED_LIBS:BOOL=ON \
          -DCMAKE_TOOLCHAIN_FILE=${WORKDIR}/toolchain.cmake \
          ${EXTRA_OECMAKE} . -DLIB_INSTALL_DIR:PATH=${prefix}/lib -DFULLVER=1.0.0 -DMAJORVER=${MAJORVER} -DDESCRIPTION="Device Unique Key Library" -DBUILD_SHARED_LIBS:BOOL=OFF
- make -j16
+ make ${PARALLEL_MAKE}
  
  
  

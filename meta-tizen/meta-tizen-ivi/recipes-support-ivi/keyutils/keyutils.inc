@@ -54,7 +54,7 @@ do_compile() {
  unset DISPLAY
  LD_AS_NEEDED=1; export LD_AS_NEEDED ;
  
- oe_runmake -j16 NO_ARLIB=1 CFLAGS="$RPM_OPT_FLAGS" CC="${CC}"
+ oe_runmake ${PARALLEL_MAKE} NO_ARLIB=1 CFLAGS="$RPM_OPT_FLAGS" CC="${CC}"
  
  
  

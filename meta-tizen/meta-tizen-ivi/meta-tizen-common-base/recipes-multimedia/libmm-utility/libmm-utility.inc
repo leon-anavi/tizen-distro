@@ -70,7 +70,7 @@ do_compile() {
   mkdir -p m4
   CFLAGS="$CFLAGS -DEXPORT_API=\"__attribute__((visibility(\\\"default\\\")))\" -D_MM_PROJECT_FLOATER"   LDFLAGS="$LDFLAGS -Wl,--rpath=${prefix}/lib -Wl,--hash-style=both -Wl,--as-needed"   
   autotools_do_configure
-  oe_runmake -j16
+  oe_runmake ${PARALLEL_MAKE}
   
   sed -i -e "s#@IMGP_REQPKG@#$IMGP_REQPKG#g" imgp/mmutil-imgp.pc
   sed -i -e "s#@JPEG_REQPKG@#$JPEG_REQPKG#g" jpeg/mmutil-jpeg.pc

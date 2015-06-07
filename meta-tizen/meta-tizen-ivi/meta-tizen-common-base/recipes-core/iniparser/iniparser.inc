@@ -49,7 +49,7 @@ do_compile() {
  unset DISPLAY
  LD_AS_NEEDED=1; export LD_AS_NEEDED ;
  
- make prefix=${prefix}  -j16 CFLAGS="$CFLAGS -fPIC"
+ make prefix=${prefix}  ${PARALLEL_MAKE} CFLAGS="$CFLAGS -fPIC"
  
  
  

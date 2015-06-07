@@ -63,7 +63,7 @@ do_compile() {
  
  export LDFLAGS+=" -Wl,-E -ldl -lreadline -lhistory -lncurses"
  sed -i 's:LUA_ROOT2 "LIBDIR/lua/5.1/":LUA_ROOT2 \"lib/lua/5.1/":' src/luaconf.h
- make -j16 -C src CC="${CC}" MYCFLAGS="$CFLAGS -fPIC -DLUA_USE_LINUX" MYLIBS="$LDFLAGS" V=5.1 all
+ make ${PARALLEL_MAKE} -C src CC="${CC}" MYCFLAGS="$CFLAGS -fPIC -DLUA_USE_LINUX" MYLIBS="$LDFLAGS" V=5.1 all
  
  
  

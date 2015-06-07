@@ -170,7 +170,7 @@ do_compile() {
  -Dwerror= \
  -Dskia_warnings_as_errors=0
  
- ninja -j16 -C src/out/Release xwalk-thirdparty
+ ninja ${PARALLEL_MAKE} -C src/out/Release xwalk-thirdparty
  
  
  

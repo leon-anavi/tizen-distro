@@ -67,7 +67,7 @@ do_compile() {
   
   autotools_do_configure
   
-  make -j16 BASE_DIR="${prefix}/share/doc/packages" DOC_MODULE="libxml2"
+  make ${PARALLEL_MAKE} BASE_DIR="${prefix}/share/doc/packages" DOC_MODULE="libxml2"
   
   exit 0
   # qemu-arm can't keep up atm, disabling check for arm

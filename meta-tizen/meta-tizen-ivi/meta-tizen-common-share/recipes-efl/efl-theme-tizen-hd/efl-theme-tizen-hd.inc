@@ -52,7 +52,7 @@ do_compile() {
  export CFLAGS="${CFLAGS} --fPIC"
  export LDFLAGS="${LDFLAGS} -Wl,--hash-style=both -Wl,--as-needed -Wl,--rpath=${prefix}/lib"
  
- oe_runmake -j16
+ oe_runmake ${PARALLEL_MAKE}
  
  
  

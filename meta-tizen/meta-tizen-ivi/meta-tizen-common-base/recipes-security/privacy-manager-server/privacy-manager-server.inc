@@ -122,7 +122,7 @@ do_compile() {
          -DVERSION=0.0.4 \
          -DFILTER_LISTED_PKG=ON \
          -DPRIVACY_POPUP=OFF
- oe_runmake -j16
+ oe_runmake ${PARALLEL_MAKE}
  
  
  

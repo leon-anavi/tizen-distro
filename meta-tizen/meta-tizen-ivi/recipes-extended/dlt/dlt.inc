@@ -90,7 +90,7 @@ do_compile() {
          -DCMAKE_TOOLCHAIN_FILE=${WORKDIR}/toolchain.cmake \
          ${EXTRA_OECMAKE} -DWITH_SYSTEMD=ON -DWITH_SYSTEMD_JOURNAL=ON \
         -DWITH_MAN=OFF -DWITH_DLT_EXAMPLES=OFF ..
- make -j16
+ make ${PARALLEL_MAKE}
  
  
  

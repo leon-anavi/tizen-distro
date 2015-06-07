@@ -109,7 +109,7 @@ do_compile() {
  -Dwith_wayland=TRUE\
  -DENABLE_GTK=OFF
  
- make -j16
+ make ${PARALLEL_MAKE}
  
  
  

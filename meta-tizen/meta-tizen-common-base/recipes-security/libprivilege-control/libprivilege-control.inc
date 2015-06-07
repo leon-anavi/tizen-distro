@@ -90,7 +90,7 @@ do_compile() {
           -DTZ_SYS_ETC=${sysconfdir} \
           -DSYSTEMD_UNIT_DIR=${systemd_unitdir}/system
  
- VERBOSE=1 oe_runmake -j16
+ VERBOSE=1 oe_runmake ${PARALLEL_MAKE}
  
  
  

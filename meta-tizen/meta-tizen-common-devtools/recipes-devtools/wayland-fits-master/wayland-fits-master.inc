@@ -58,7 +58,7 @@ do_compile() {
   ./autogen.sh
   
   autotools_do_configure
-  make -j16
+  make ${PARALLEL_MAKE}
   
   
   

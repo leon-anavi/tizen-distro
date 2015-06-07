@@ -70,7 +70,7 @@ do_compile() {
          -DBUILD_SHARED_LIBS:BOOL=ON \
          -DCMAKE_TOOLCHAIN_FILE=${WORKDIR}/toolchain.cmake \
          ${EXTRA_OECMAKE} . -DFULLVER=0.1.1 -DMAJORVER=${MAJORVER}
- oe_runmake -j16
+ oe_runmake ${PARALLEL_MAKE}
  
  
  

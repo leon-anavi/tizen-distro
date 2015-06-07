@@ -124,7 +124,7 @@ do_compile() {
  
  ./tools/gyp/gyp $GYP_OPTIONS tizen-wrt.gyp
  
- ninja -C out/Default -j16
+ ninja -C out/Default ${PARALLEL_MAKE}
  
  
  
