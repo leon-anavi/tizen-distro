@@ -81,7 +81,7 @@ do_compile() {
          -DX11_SUPPORT=Off \
          -DWAYLAND_SUPPORT=On
  
- make -j16
+ make ${PARALLEL_MAKE}
  
  
  

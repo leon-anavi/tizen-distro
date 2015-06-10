@@ -68,7 +68,7 @@ do_compile() {
          -DBUILD_SHARED_LIBS:BOOL=ON \
          -DCMAKE_TOOLCHAIN_FILE=${WORKDIR}/toolchain.cmake \
          ${EXTRA_OECMAKE} . -DARCH=x86 -DFULLVER=0.0.1 -DMAJORVER=${MAJORVER} -DDESCRIPTION="Crypto Service Library (Development)"
- make -j16
+ make ${PARALLEL_MAKE}
  
  
  

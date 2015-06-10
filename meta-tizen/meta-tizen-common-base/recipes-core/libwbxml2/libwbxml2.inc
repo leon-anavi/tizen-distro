@@ -88,7 +88,7 @@ do_compile() {
          -DCMAKE_BUILD_TYPE=None \
          -DENABLE_INSTALL_DOC:BOOL=OFF \
           ${WORKDIR}/libwbxml-0.11.2
- make -j16 VERBOSE=1
+ make ${PARALLEL_MAKE} VERBOSE=1
  cd ${CURDIR}
  
  

@@ -62,7 +62,7 @@ do_compile() {
   export CFLAGS="$CFLAGS -fstack-protector -fno-strict-aliasing -fPIC"
   
   autotools_do_configure
-  oe_runmake -j16
+  oe_runmake ${PARALLEL_MAKE}
   
   
   

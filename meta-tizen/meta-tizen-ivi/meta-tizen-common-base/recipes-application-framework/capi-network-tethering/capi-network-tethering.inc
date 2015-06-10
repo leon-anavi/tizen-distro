@@ -70,7 +70,7 @@ do_compile() {
          -DBUILD_SHARED_LIBS:BOOL=ON \
          -DCMAKE_TOOLCHAIN_FILE=${WORKDIR}/toolchain.cmake \
          ${EXTRA_OECMAKE} . -DARCH=i586
- make -j16
+ make ${PARALLEL_MAKE}
  
  
  

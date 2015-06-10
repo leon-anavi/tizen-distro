@@ -60,7 +60,7 @@ do_compile() {
   export CFLAGS+=" -Wall -Wcast-align -Wcast-qual -Wextra -Wno-array-bounds -Wno-empty-body -Wno-ignored-qualifiers -Wno-unused-parameter -Wshadow -Wwrite-strings -Wswitch-default -Wno-unused-but-set-parameter -Wno-unused-but-set-variable"
   
   autotools_do_configure
-  make -j16
+  make ${PARALLEL_MAKE}
   
   
   

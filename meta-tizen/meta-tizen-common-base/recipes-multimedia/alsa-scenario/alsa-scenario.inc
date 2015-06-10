@@ -60,7 +60,7 @@ do_compile() {
   cp -f ${prefix}/share/libtool/config/config.sub ${WORKDIR}/alsa-scenario-0.2.1/
   
   autotools_do_configure
-  oe_runmake -j16
+  oe_runmake ${PARALLEL_MAKE}
   
   
   

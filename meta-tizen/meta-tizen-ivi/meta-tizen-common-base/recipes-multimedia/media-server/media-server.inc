@@ -80,7 +80,7 @@ do_compile() {
   mkdir -p m4
   
   autotools_do_configure
-  oe_runmake -j16
+  oe_runmake ${PARALLEL_MAKE}
   
   
   

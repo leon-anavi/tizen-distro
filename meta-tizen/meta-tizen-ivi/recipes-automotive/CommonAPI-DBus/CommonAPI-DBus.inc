@@ -63,7 +63,7 @@ do_compile() {
   autoreconf -i
   
   autotools_do_configure
-  oe_runmake -j16
+  oe_runmake ${PARALLEL_MAKE}
   
   
   

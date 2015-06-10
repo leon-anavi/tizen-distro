@@ -110,7 +110,7 @@ do_compile() {
           -DSUPPORT_LOG_MESSAGE:BOOL=ON \
           -DSUPPORT_CHECK_IPC:BOOL=ON
  
- oe_runmake -j16
+ oe_runmake ${PARALLEL_MAKE}
  
  
  

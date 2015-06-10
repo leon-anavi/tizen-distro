@@ -87,7 +87,7 @@ do_compile() {
          ${EXTRA_OECMAKE} .
  
  
- make -j16
+ make ${PARALLEL_MAKE}
  
  
  

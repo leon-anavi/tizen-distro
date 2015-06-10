@@ -75,7 +75,7 @@ do_compile() {
          ${EXTRA_OECMAKE} . -DFULLVER=0.0.3 -DMAJORVER=${MAJORVER}
  
  
- make -j16
+ make ${PARALLEL_MAKE}
  
  
  
