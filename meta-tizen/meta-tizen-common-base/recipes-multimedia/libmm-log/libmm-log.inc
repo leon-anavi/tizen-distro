@@ -53,7 +53,7 @@ do_compile() {
   ./autogen.sh
   
   autotools_do_configure
-  make ${PARALLEL_MAKE}
+  oe_runmake ${PARALLEL_MAKE}
   
   
   

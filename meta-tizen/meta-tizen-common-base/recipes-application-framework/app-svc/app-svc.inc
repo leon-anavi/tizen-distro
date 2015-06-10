@@ -85,7 +85,7 @@ do_compile() {
          ${EXTRA_OECMAKE} . \
  -Dwith_wayland=TRUE
  
- make ${PARALLEL_MAKE}
+ oe_runmake ${PARALLEL_MAKE}
  
  
  

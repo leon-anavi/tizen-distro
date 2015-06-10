@@ -73,8 +73,8 @@ do_compile() {
   
   autotools_do_configure
   
-  make ${PARALLEL_MAKE}
-  make ${PARALLEL_MAKE} -C tests dristat drmstat
+  oe_runmake ${PARALLEL_MAKE}
+  oe_runmake ${PARALLEL_MAKE} -C tests dristat drmstat
   
   
   
