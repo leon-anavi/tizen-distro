@@ -1,42 +1,42 @@
-DESCRIPTION = "GENIVI Media Manager" 
+SUMMARY = "GENIVI Media Manager"
+DESCRIPTION = "The purpose of a common Media Manager API is to provide to IVI \
+applications a way to control basic playback of contents of connected CE \
+devices. A single API enables a wider range of available devices and media \
+without implementing separate solutions for each type of device."
 SECTION = "OpenIVI" 
-LICENSE = "MPL-2.0" 
 PR = "r0" 
 
-LIC_FILES_CHKSUM ??= "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
+LICENSE = "MPL-2.0"
+LIC_FILES_CHKSUM = "file://LICENCE;md5=815ca599c9df247a0c7f619bab123dad \
+                    file://src/main.cpp;endline=12;md5=117b573e85833eff1e3b3c595d1ce868"
 
-DEPENDS = "jansson"
-DEPENDS += "glibc"
-DEPENDS += "CommonAPI"
-DEPENDS += "CommonAPI-DBus"
+DEPENDS = "glib-2.0 jansson CommonAPI CommonAPI-DBus"
+RDEPENDS_${PN} = "rygel lightmediascanner dleyna-renderer dleyna-server"
 
-RDEPENDS = ""
-RDEPENDS_${PN} = "lightmediascanner"
-RDEPENDS_${PN} = "rygel"
-#dLeyna - DLNA-certified open source solution for Linux
-RDEPENDS_${PN} = "gupnp-dlna"
-
-SRC_URI = "git://git.projects.genivi.org/media-manager.git;branch=master;tag=45e08ce242a6006aaaefaeda236f51c984eaeeb1"
+SRCREV_media-manager = "45e08ce242a6006aaaefaeda236f51c984eaeeb1"
+SRCREV_media-manager-interfaces = "f0510129f8ac4fa48e7164dbb81ae9d0a922b9c4"
+SRCREV_FORMAT = "media-manager"
+SRC_URI = "git://git.projects.genivi.org/media-manager.git;name=media-manager \
+           git://git.projects.genivi.org/media-manager-interfaces.git;name=media-manager-interfaces;destsuffix=git/src/interfaces \
+          "
 
 S = "${WORKDIR}/git"
 
 inherit pkgconfig tizen_cmake
 
 mediamanager_file = ""
-mediamanager_file += "${prefix}/etc/udev/rules.d/10-media-manager-usb-mount-rules.rules" 
+mediamanager_file += "${prefix}/etc/udev/rules.d/10-media-manager-usb-mount-rules.rules"
 
 do_configure() {
  cd ${S}
- git submodule update --init --recursive
  mkdir build
 }
 
 do_compile() {
  cd ${S}/build
- LANG=C
- export LANG
+ LANG=C; export LANG;
  unset DISPLAY
- LD_AS_NEEDED=1; export LD_AS_NEEDED ;
+ LD_AS_NEEDED=1; export LD_AS_NEEDED;
 
  export LDFLAGS="${LDFLAGS} -Wl,--rpath=${prefix}/lib -Wl,--as-needed -Wl,--hash-style=both"
 
@@ -61,8 +61,7 @@ do_install() {
 # install -m 0755 cameracapture ${D}${bindir}
  export RPM_BUILD_ROOT=${D}/build
  cd ${S}/build
- LANG=C
- export LANG
+ LANG=C; export LANG;
  unset DISPLAY
  rm -rf ${D}
  mkdir -p ${D}
