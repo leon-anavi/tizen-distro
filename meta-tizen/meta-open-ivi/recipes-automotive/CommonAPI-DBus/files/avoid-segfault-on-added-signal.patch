@@ -1,0 +1,13 @@
+diff --git a/src/CommonAPI/DBus/DBusObjectManagerStub.cpp b/src/CommonAPI/DBus/DBusObjectManagerStub.cpp
+index 970f366..c46d828 100644
+--- a/src/CommonAPI/DBus/DBusObjectManagerStub.cpp
++++ b/src/CommonAPI/DBus/DBusObjectManagerStub.cpp
+@@ -192,7 +192,7 @@ bool DBusObjectManagerStub::emitInterfacesAddedSignal(std::shared_ptr<DBusStubAd
+ 
+     dbusOutputStream << dbusStubObjectPath;
+     dbusOutputStream << dbusInterfacesAndPropertiesDict;
+-    dbusOutputStream.flush();
++    //dbusOutputStream.flush();
+ 
+     const bool dbusSignalEmitted = dbusConnection->sendDBusMessage(dbusSignal);
+     return dbusSignalEmitted;
